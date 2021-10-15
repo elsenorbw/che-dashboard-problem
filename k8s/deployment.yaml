@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-server-deployment
+  labels:
+    app: content-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: content-server
+  template:
+    metadata:
+      labels:
+        app: content-server
+    spec:
+      containers:
+      - name: cs
+        image: content-server:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+
+
