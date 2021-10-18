@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debugger-server-deployment
+  labels:
+    app: debugger-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debugger-server
+  template:
+    metadata:
+      labels:
+        app: debugger-server
+    spec:
+      containers:
+      - name: cs
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+
+
